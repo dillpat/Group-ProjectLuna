@@ -1,0 +1,66 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/leaderboard.css' %}" />
+<title>Leaderboards</title>
+<!-- Leaderboard page, shows users credits gained and their ranks for the overall leaderboard
+and the weekly leaderbaords -->
+{% endblock head %}
+
+{% block page-content %}
+   
+        <h1 class="name">Leaderboards</h1>
+        <div class="leaderboard-block">
+            <div class="button-block">
+                <div id="btn"></div>
+          
+                  <button id="a" type="button" class="btn-set" style="color: white;" onclick="alltime()"> All time</button>
+                  <button id="w" type="button" class="btn-set" onclick="weekly()"> Weekly</button>
+                  
+            </div>
+            <div style="margin-left:4%;">
+              <h2 style="text-align: center;">Top 10 users</h2> 
+              <h2 id="table">All-time</h2> 
+            </div>
+
+            <div id="weekly" class="boards">
+              <table id="leaderboard">
+                <tr>
+                    <th>#</th>                
+                    <th>Username</th>
+                    <th>Astro Credits</th>
+                </tr>
+                {% for weekly_total in weekly_scores %} 
+                <tr>        
+                    <td></td>
+                    <td>{{weekly_total.0}}</td>
+                    <td>{{weekly_total.1}}</td>
+                    
+                </tr>
+                {%endfor %}
+              </table>
+
+            </div>
+            <div id="alltime" class="boards">
+              <table  id="leaderboard">
+                <tr>
+                    <th>#</th>                
+                    <th>Username</th>
+                    <th>Astro Credits</th>
+                </tr>
+                {% for each_score in top_scores %} 
+                <tr>        
+                    <td></td>
+                    <td>{{each_score.0}} </td>
+                    <td>{{each_score.1}}</td>
+                    
+                </tr>
+                {%endfor %}
+              </table>
+            </div>           
+        </div>
+        <script src="{% static 'js/leaderboard.js' %}"></script>
+
+    
+
+{% endblock page-content %}

@@ -1,0 +1,109 @@
+/* css for the profile page */
+.heading {
+  text-align: center;
+}
+
+.heading h1 {
+  font-size: 8vw;
+  margin: 0;
+}
+
+.top-block {
+  color: black;
+  background: #fff;
+  margin-left: 5vw;
+  text-align: center;
+  width: fit-content;
+  margin: 0;
+  padding: 0.2rem;
+  border-radius: 30px;
+  -webkit-box-shadow: #480ef1 0px 10px 13px -7px, 5px 5px 15px 5px #480ef1;
+  box-shadow: #480ef1 0px 10px 13px -7px, 5px 5px 15px 5px #480ef1;
+}
+
+.reset-password-btn {
+  padding: 15px;
+  background: linear-gradient(to right, #3a0ef1, #680ef1);
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+.content-user {
+  font-size: 20px;
+}
+
+.content-rank {
+  font-size: 15px;
+  min-width: 30vw;
+}
+
+.content-rank i {
+  font-size: 10rem;
+}
+
+.content-credits {
+  font-size: 15px;
+}
+
+.overall-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.content-studentnumber {
+  font-size: 10px;
+}
+
+input,
+button {
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  color: #fff;
+  margin-top: 1rem;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(to right, #3a0ef1, #680ef1);
+  border: 0;
+  border-radius: 30px;
+}
+
+.displayed_mod {
+  text-align: center;
+}
+
+.planets-block {
+  background: white;
+  display: flex;
+  color: black;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 50vw;
+  padding: 10px;
+  padding-left: 20px;
+  -webkit-box-shadow: #480ef1 0px 10px 13px -7px, 5px 5px 15px 5px #480ef1;
+  box-shadow: #480ef1 0px 10px 13px -7px, 5px 5px 15px 5px #480ef1;
+  border-radius: 30px;
+}
+
+.password_reset {
+  text-align: center;
+}
+
+@media only screen and (max-width: 1200px) {
+  .overall-profile {
+    flex-direction: column;
+  }
+  .planets-block {
+    margin: 1.5rem auto;
+    flex-direction: column;
+    width: 80vw;
+    align-items: center;
+  }
+}

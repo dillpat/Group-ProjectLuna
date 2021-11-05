@@ -1,0 +1,270 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+ <link rel="stylesheet" href="{% static 'css/glider.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/wellbeing.css' %}" />
+<title>Wellbeing</title>
+<!-- wellbeing page gives users a selection of health and wellbeing articles to views,
+shows all of their 3 groups of tasks: 
+1. set by staff  
+2. random daily tasks
+3. user set tasks (self)
+-->
+{% endblock head %}
+
+{% block page-content %}
+<body onload='circleset()'>
+<div class="top-heading">
+    <h1>Wellbeing</h1>
+</div>
+
+<!-- wellbeing artcles -->
+<div class="article-section">
+
+           <div class="glider-container">
+
+               <button class="glider-prev">
+                   <i class="fas fa-chevron-circle-left"></i>
+               </button>
+
+                <div class="glider">
+                        <div class="card" href="">
+                            <div class="card-wrapper">
+
+                                <div class="card-img">
+                                    <img src="{{articles_display.0.2}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    <a href = "{{articles_display.0.1}}">{{articles_display.0.0}}</a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="card" href="">
+                            <div class="card-wrapper">
+                                <div class="card-img">
+                                    <img src="{{articles_display.1.2}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    <a href = "{{articles_display.1.1}}"> {{articles_display.1.0}}</a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card" href="">
+                            <div class="card-wrapper">
+                                <div class="card-img">
+                                    <img src="{{articles_display.2.2}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    <a href = "{{articles_display.2.1}}">{{articles_display.2.0}}</a>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="card" href="">
+                            <div class="card-wrapper">
+                                <div class="card-img">
+                                    <img src="{{articles_display.3.2}}" alt="">
+                                </div>
+                                <div class="card-title">
+                                    <a href = "{{articles_display.3.1}}">{{articles_display.3.0}}</a>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+
+               <button class="glider-next">
+                     <i class="fas fa-chevron-circle-right"></i>
+                </button>
+            <div id="dots" class="glider-dots"></div>
+        </div>
+</div>
+
+<!-- academic set goals -->
+<div class="academic-goals">
+    <h1>Academic Goals</h1>
+     {%for module in long_term_goals%}
+    <ul class="outer-list">
+        <li>{{module.module}}</li>
+        <ul class="inner-list">
+            {%for task in module.goals%}
+            <li>{{task}}</li>
+            {% endfor %}
+        </ul>
+    </ul>
+    {% endfor %}
+</div>
+
+<!-- random daily goals -->
+<div class="step-goals daily">
+    <h1>Daily Step Goal</h1>
+    <div class="step-wrapper">
+        <ul id = "daily_task_list">
+            {% for task in daily_tasks %}
+            {% if task == "DONE" %}
+            <h1> All tasks are finished. Well done </h1>
+            {% else %}
+                <li>
+                    <input type="checkbox" name="{{task}}" value="34" class="task-checkbox" onclick="checkTask(this)">
+                    {{task}}
+                </li>
+                <br>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="progress-circle">
+            <svg
+                class="progress-ring"
+                height="120"
+                width="120"
+                >
+                <circle
+                class="progress-ring__circle"
+                stroke-width="5"
+                fill="transparent"
+                r="58"
+                cx="60"
+                cy="60"
+                />
+                <text x="50%" fontSize="2rem" y="-40%" id="daily_task_text" text-anchor="middle" transform="rotate(90)"></text>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<!-- user (self) set goals -->
+<div class="step-goals user-set" style="height: auto;">
+    <h1>User Set Goals</h1>
+    <!-- <form id="userTaskForm">
+        <label for="userTask">Enter a new task:</label>
+        <input type="text" id="userTask" name="userTask" value="New Task">
+
+    </form>
+    <button onclick="addUserTask()">Enter</button> -->
+    <form id="new_personal_task" method = "POST">
+        {% csrf_token %}
+        <label for="userTask">Enter a new task:</label>
+        <input id="new-personal-task" type="text"  name="new_personal_task" >
+        <button >Enter</button>
+        
+    </form>
+    <div class="step-wrapper">
+        <form>
+            <ul id="personal-tasks">
+                {% for every_task in personal_tasks %}
+                    <li>
+                        <input type="checkbox" value="34" name="{{every_task}}"  class="task-checkbox" onclick="checkUserTask('{{every_task}}')">
+                        {{every_task}}
+                    </li>
+
+                    <br>
+                {% endfor %}
+            </ul>
+        </form>
+
+    </div>
+    <div class="step-wrapper">
+        <!-- <ul id="userTaskList"></ul> -->
+        <div class="progress-circle">
+            <!-- <svg
+                class="progress-ring"
+                height="120"
+                width="120"
+                >
+                <circle
+                class="progress-ring__circle"
+                stroke-width="5"
+                fill="transparent"
+                stroke="black"
+                r="58"
+                cx="60"
+                cy="60"
+                />
+            </svg> -->
+        </div>
+    </div>
+    <!-- <div class="expand">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="more-user-goals" style="display: none;">
+        <ul>
+            <li>More 1</li>
+            <li>More 2</li>
+        </ul>
+    </div> -->
+</div>
+{% endblock page-content %}
+
+{% block extrascripts %}
+</body>
+<script type="text/JavaScript" src="{% static 'js/glider.min.js' %}"></script>
+<script  type="text/JavaScript" src="{% static 'js/wellbeing.js' %}"></script>
+<script>
+new Glider(document.querySelector('.glider'),{
+    slidesToShow: 1,
+    draggable: true,
+    dots: '#dots',
+    arrows:{
+        prev: '.glider-prev',
+        next: '.glider-next',
+    }
+})
+function setProgress(percent) {
+    const offset = circumference - percent / 100 * circumference;
+    circle.style.strokeDashoffset = offset;
+}
+
+
+function circleset(){
+  let daily_text = document.querySelector("daily_task_text")
+  let daily_tasks = document.querySelectorAll('.step-wrapper .task-checkbox')
+  let i = document.getElementById("daily_task_list").getElementsByTagName("li").length
+
+
+
+  if(i == 3){
+      document.getElementById("daily_task_text").innerHTML = "";
+  } else if(i == 2){
+      taskProgress = 33;
+      setProgress(taskProgress);
+      circle.style.stroke = "red"
+      document.getElementById("daily_task_text").innerHTML = "1/3"
+
+  } else if(i == 1){
+    taskProgress = 66;
+    setProgress(taskProgress);
+    circle.style.stroke = "orange"
+    document.getElementById("daily_task_text").innerHTML = "2/3"
+
+  }else {
+    taskProgress = 100;
+    setProgress(taskProgress);
+    ircle.style.stroke = "green"
+    document.getElementById("daily_task_text").innerHTML = "3/3"
+
+  }
+
+}
+
+
+function checkUserTask(e){
+    $(function () {
+        $.ajax({
+            url: "/user_set_tasks",
+            type: 'get',
+            data: {taskName: e,},
+            // success: function(){
+            //     alert(e+" Successful")
+            // },
+            // error: function(){
+            //     alert(e+" error")
+            // },
+        })
+    })
+}
+</script>
+
+{% endblock extrascripts %}

@@ -1,0 +1,14 @@
+/* css for the create a post form page */
+
+.content-section{
+    width:fit-content;
+    margin: 100px auto;
+    padding: 30px;
+    color: black;
+    background: white;
+    border-radius: 30px;
+}
+
+.form{
+    padding: 10px;
+}

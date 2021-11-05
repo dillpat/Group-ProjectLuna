@@ -1,0 +1,114 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<html>
+<link rel="stylesheet" href="{% static 'css/glider.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+<link rel="stylesheet" href="{% static 'css/module_post.css' %}" />
+
+<title>Module Post Info</title>
+
+<!-- page shows a post when a user clicks on the post on the academic module page, anyone option to like and report
+gives the creator the option to edit or delete the post -->
+{% endblock head %}
+{% block page-content %}
+<body>
+  <article class="media content-section">
+      <div class="create-box">
+          <div class="article-metadata">
+              <h1>{{object.module}}</h1>
+              <a class="mr-2" href="#">{{ object.author }}</a>
+              <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+              <h2 class="article-title" href = "#">{{ object.title }}</h2>
+              <p class="article-content">{{ object.content }}</p>
+              <p class="text-secondary" ><b>{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</b></p>
+              <div class="like-button">
+                {% if user.is_authenticated %}
+          
+                <form action="{% url 'modulepost_like' object.id %}" method="POST">
+                  {% csrf_token %}
+          
+                  {% if post_is_liked %}
+                  <button type="submit" name="module_post_id" value="{{object.id}}" class="like-btn" style="font-size: 15px;">
+                    <i class="fa fa-thumbs-up" style="font-size:36px;color:green;padding-right: 10px;"></i>You have liked this post</button>
+                  {% else %}
+                  <button type="submit" name="module_post_id" value="{{object.id}}" class="like-btn"><i class="far fa-thumbs-up" style="font-size:36px;color:green"></i></button>
+                  {% endif %}
+                </form>
+                {% endif %}
+                </div>
+              <br></br>
+              {% if object.author == user %}
+              <div>
+                  <a class="btn-class-select2" href="{% url 'module_post_update' object.id %}">Update</a>
+                  <a class="btn-class-select3" href="{% url 'module_post_delete' object.id %}">Delete</a>
+              </div>
+              {% endif %}
+              <br></br>
+              <form method = "POST" action="{% url 'luna_application-module_display' %}">
+                {% csrf_token %}
+                <div class="btn-group">
+                      <button class="btn-class-select3" id="module-name" name="module" value="{{object.module}}">Back</button>
+              </div>
+              </form>
+              <div>
+      
+                <div class="report-btn">
+                 <form action="{% url 'modulepost_report' object.id %}" method="POST">
+                    {% csrf_token %}
+                    {% if post_is_reported %}
+                      <button onclick="alert('Report has been revoked')" type="submit" name="module_report_id"" value="{{object.id}}"><i style="color: red;" class="fas fa-flag"></i></button>
+                    {% else %}
+                      <button onclick="alert('Post has been reported')" type="submit" name="module_report_id"" value="{{object.id}}"><i style="color: lime;" class="fas fa-flag"></i></button>
+                  </form>
+                </div>
+            
+                    {% endif %}
+                </div>
+              <form action="{% url 'networkpost_report' object.id %}" method="POST">
+                {% csrf_token %}
+
+              </form>
+    </div>
+          </div>
+      </div>
+
+
+  </article>
+
+      
+  <div class="create-box textbox">
+    <form action="{% url 'modulepost_comment' object.id %}" method="POST">
+      {% csrf_token %}
+      <div class="comment-area">
+        <textarea name="comment_posted"  onfocus="setbg('#e5fff3');" onblur="setbg('white')" id="" rows="4"></textarea>
+        <button type="submit" class="comment-btn">Post comment</button>
+      </div>
+    </form>
+  </div>
+
+
+
+  <div class="comment">
+
+    {% for comment in comments %}
+
+    <div class="create-box">
+      <div class="article-metadata">
+      <a class="mr-2" href="#">{{ comment.author }}</a>
+      <small class="text-muted">{{ comment.date_posted|date:"F d, Y" }}</small>
+      <p class="article-content">{{ comment.content }}</p>  
+        </div>
+
+      </div>
+
+
+      {% endfor %}
+
+  </div>
+
+
+
+</body>
+</html>
+{% endblock page-content %}

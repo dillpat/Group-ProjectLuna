@@ -1,0 +1,388 @@
+/* css for the start page */
+
+@import "susy";
+@import "compass/reset";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Cabin", sans-serif;
+  overflow: hidden;
+}
+
+.main {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(39, 10, 119, 1) 0%,
+    rgba(166, 10, 160, 1) 20%,
+    rgba(227, 122, 3, 1) 50%,
+    rgba(166, 10, 160, 1) 80%,
+    rgba(39, 10, 119, 1) 100%
+  );
+  background-position: center;
+  background-size: cover;
+  position: fixed;
+}
+
+.moon-wrapper img {
+  width: calc(100% + 200px);
+  align-self: center;
+  margin-right: 10%;
+  display: block;
+  max-height: 70vh;
+  position: absolute;
+  bottom: -40%;
+}
+
+/* spaceship object */
+#spaceship {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  bottom: 0;
+  left: 40%;
+}
+
+.name {
+  color: white;
+  font-size: 60px;
+  font-family: sans-serif;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.btn {
+  margin: 50px auto;
+  background: white;
+  width: fit-content;
+}
+
+.explore-container {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  display: flex;
+  z-index: 1000;
+  flex-direction: column;
+}
+
+.explore-container img {
+  width: 400px;
+  justify-self: center;
+  align-self: center;
+}
+
+#explore-btn {
+  background: #fff;
+  width: 200px;
+  color: black;
+  height: 50px;
+  border-radius: 2rem;
+  font-weight: 600;
+  margin: 1rem;
+  justify-self: center;
+  font-size: 2rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+#explore-btn:hover {
+  background-color: #480ef1;
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+.stars,
+.twinkling {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stars {
+  z-index: -100;
+  background: #000 url("../assets/backgroundStars.png") repeat top center;
+  position: fixed;
+}
+
+.twinkling {
+  z-index: -100;
+  background: transparent url("../assets/twinkling.png") repeat top center;
+  animation: move-twink-back 200s linear infinite;
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  #explore-btn {
+    width: 500px;
+    height: 100px;
+    font-size: 3rem;
+  }
+  .explore-container {
+    left: 35%;
+  }
+}
+
+.planet1 {
+  margin-left: 20px;
+  margin-top: 30px;
+  height: 300px;
+  position: absolute;
+  width: 50px;
+  --d: 250px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 250px;
+  background: url("../assets/planetTemplate2.svg") 0 / auto 100%;
+  box-shadow: 0 0 25px purple;
+  animation: spin 15s linear infinite;
+  animation-direction: reverse;
+}
+
+.planet2 {
+  margin-left: 0px;
+  margin-top: 0px;
+  height: 100px;
+  left: 10%;
+  position: absolute;
+  top: 10%;
+  width: 50px;
+  --d: 400px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 250px;
+  background: url("../assets/planetTemplate5.svg") 0 / auto 100%;
+  box-shadow: 0 0 25px red;
+  animation: spin2 15s linear infinite;
+  animation-direction: reverse;
+}
+
+.planet3 {
+  margin-left: 10px;
+  margin-top: 20px;
+  height: 100px;
+  left: 20%;
+  position: absolute;
+  top: 10%;
+  width: 50px;
+  --d: 150px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 150px;
+  background: url("../assets/planetTemplate1.svg") 0 / auto 100%;
+  box-shadow: 0 0 25px purple;
+  animation: spin3 12s linear infinite;
+  animation-direction: reverse;
+}
+.planet4 {
+  margin-left: 0px;
+  margin-top: 0px;
+  height: 100px;
+  left: 20%;
+  position: absolute;
+  top: 10%;
+  width: 50px;
+  --d: 75px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 100px;
+  background: url("../assets/planetTemplate3.svg") 0 / auto 100%;
+  box-shadow: 0 0 100px purple;
+  animation: spin4 18s linear infinite;
+  animation-direction: reverse;
+}
+
+#float1 {
+  right: 10%;
+  top: 10%;
+  height: 350px;
+  width: 350px;
+  position: absolute;
+  -webkit-animation: action 3s infinite alternate;
+  animation: action 3s infinite alternate;
+}
+
+#float2 {
+  left: 5%;
+  height: 500px;
+  width: 500px;
+  right: 30%;
+  top: 25%;
+  position: absolute;
+  -webkit-animation: action 3.5s infinite alternate;
+  animation: action 3.5s infinite alternate;
+}
+
+#float3 {
+  left: 25%;
+  height: 250px;
+  width: 250px;
+  position: absolute;
+  top: 10%;
+  -webkit-animation: action 2s infinite alternate;
+  animation: action 2s infinite alternate;
+}
+
+#float4 {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  -webkit-animation: action 2.5s infinite alternate;
+  animation: action 2.5s infinite alternate;
+}
+
+@keyframes spin {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1250px;
+  }
+}
+@keyframes spin2 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 1000px;
+  }
+}
+
+@keyframes spin3 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 750px;
+  }
+}
+
+@keyframes spin4 {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 750px;
+  }
+}
+
+@-webkit-keyframes action {
+  0% {
+    transform: translateY(20);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes action {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+.comet {
+  position: absolute;
+  z-index: 20;
+  border: 2px solid transparent;
+  border-bottom: 70px solid #fff;
+}
+
+.comet::after {
+  content: "";
+  position: absolute;
+  transform: translateX(-50%);
+  height: 10px;
+  width: 10px;
+  border-radius: 100%;
+  background: #fff;
+  box-shadow: 0 0 10px 0 #fff;
+}
+
+#comet1 {
+  transform-origin: top center;
+  top: -20%;
+  left: 43%;
+}
+
+#comet1:after {
+  top: 58px;
+  left: 50%;
+}
+
+#comet2 {
+  transform-origin: top right;
+  top: -20%;
+  right: 0%;
+}
+
+#comet2:after {
+  top: 58px;
+  right: 10%;
+}
+
+#comet3 {
+  transform-origin: top center;
+  top: -20%;
+  right: 20%;
+}
+
+#comet3:after {
+  top: 58px;
+  right: 10%;
+}
+
+#comet4 {
+  transform-origin: top right;
+  top: 30%;
+  right: 20%;
+}
+
+#comet4::after {
+  top: 58px;
+  right: 10%;
+}
+
+#comet5 {
+  transform-origin: top left;
+  top: 30%;
+  left: 30%;
+}
+
+#comet5::after {
+  top: 58px;
+  right: 30%;
+}
+
+#comet6 {
+  transform-origin: top left;
+  top: 0%;
+  right: 30%;
+}
+
+#comet6::after {
+  top: 58px;
+  right: 30%;
+}

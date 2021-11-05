@@ -1,0 +1,153 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}" />
+<link rel="stylesheet" href="{% static 'css/planetSpin.css' %}" />
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<title>Homepage</title>
+<!-- Homepage for the user display. Has a solar system animation when loaded.
+The user can navigate using the button widgets or the navbar to the luna_application pages:
+Profile
+Wellbeing pages
+Academic pages
+Network/social pages
+Leaderboards
+-->
+{% endblock head %}
+
+    {% block page-content %}
+
+    {% if policy %}
+    <div class="container-wrapper">
+      <h2 class="terms-title">Hey! Before you continue make sure you agree to our terms!</h2>
+      <div id="policy-terms">
+        <iframe id="conditions" src="https://drive.google.com/file/d/1zdo2IdOhP9vMDjHPFTckMolFysQBa9-S/preview"></iframe>
+      </div>
+
+      <div class="bot-wrapper">
+
+        <div class="agree-terms">
+          <label for="">I have read and agree to the terms above</label>
+          <input class="checker" type="checkbox">
+        </div>
+
+
+        <div class="button-wrapper">
+          <form method="POST">
+            {% csrf_token %}
+            <input type="submit" value="Take me back" name="declined" class="cancel"></input>
+            <input type="submit" value="Lets explore" name="terms_accepted" disabled class="accept"></input>
+          </form>
+        </div>"
+      </div>
+
+    </div>
+
+    <div class="policy-shader"></div>
+    {% endif %}
+
+    <div class="top-heading">
+        <h1>Luna Homepage</h1>
+    </div>
+        <div class="planet">
+          <div id="system">
+            <div id="sun" style="background:url('{{fav_planet}}') 0 / auto 100%"></div>
+            <div id="earth-orbit">
+                <div id="p4"></div>
+              </div>
+            </div>
+            <div id="p2-orbit">
+                <div id="p2"></div>
+            </div>
+            <div id="p3-orbit">
+                <div id="p3"></div>
+            </div>
+            <div id="p4-orbit">
+                <div id="earth">
+                    <div id="moon-orbit">
+                          <div id="moon"></div>
+                      </div>
+                </div>
+            </div>
+          </div>
+          <div class="space"></div>
+
+        <div class="profile" onclick="location.href='{% url 'luna_application-my_profile' %}'">
+          <div class="circle-pic">
+            <i class="fas fa-user"></i>
+          </div>
+        </div>
+
+        <div class="the-hub">
+          <div class="tile-wrapper" id="the-hub" onclick="location.href='{% url 'luna_application-the_hub' %}'">
+            <div class="tile-title">
+              The HUB
+            </div>
+            <div class="tile-background">
+              <!-- <img src="{% static 'assets/staying_in.svg' %}" alt="123"> -->
+            </div>
+          </div>
+        </div>
+
+
+    <div class="tile-wrappers">
+
+      {% if user != user.staffprofile.user %}
+        <div class="tile-wrapper" id="wellbeing" onclick="location.href='{% url 'luna_application-wellbeing_tasks' %}'">
+          <div class="tile-title">
+            W E L L B E I N G
+          </div>
+          <div class="tile-background">
+            <!-- <img src="{% static 'assets/staying_in.svg' %}" alt="123"> -->
+          </div>
+        </div>
+        {% endif %}
+      {% if user == user.staffprofile.user %}
+      <div class="tile-wrapper" id="wellbeing" onclick="location.href='{% url 'luna_application-assign_tasks' %}'">
+        <div class="tile-title">
+          ASSIGN ACADEMIC TASKS
+        </div>
+        <div class="tile-background">
+          <!-- <img src="{% static 'assets/staying_in.svg' %}" alt="123"> -->
+        </div>
+      </div>
+        {% endif %}
+
+        <div class="tile-wrapper" id="leaderboards" onclick="location.href='{% url 'luna_application-leaderboards' %}'">
+          <div class="tile-title">
+            L E A D E R B O A R D S
+          </div>
+          <div class="tile-background">
+            <!-- <img src="../assets/undraw_winners_ao2o.svg" alt="123"> -->
+          </div>
+        </div>
+          {% if user != user.staffprofile.user %}
+          <div class="tile-wrapper" id="networks" onclick="location.href='{% url 'luna_application-student_networks' %}'">
+          <div class="tile-title">
+            N E T W O R K S
+          </div>
+          <div class="tile-background">
+            <!-- <img src="../assets/undraw_staying_in_i80u.svg" alt="123"> -->
+          </div>
+        </div>
+        {% endif %}
+
+          <div class="tile-wrapper" id="academics" onclick="location.href='{% url 'luna_application-academic_network' %}'">
+            <div class="tile-title">
+              A C A D E M I C S
+            </div>
+            <div class="tile-background">
+              <!-- <img src="../assets/undraw_studying_s3l7.svg" alt="123"> -->
+            </div>
+        </div>
+
+      </div>
+
+    {% endblock page-content %}
+
+
+    {% block extrascripts %}
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script src="../static/js/home.js"></script>
+    {% endblock extrascripts %}

@@ -1,0 +1,126 @@
+/* css for the leaderboard page */
+* {
+  font-family: sans-serif;
+}
+
+.name {
+  text-align: center;
+  font-size: 8vw;
+  margin: 0;
+}
+
+.leaderboard-block {
+  background: white;
+  color: black;
+  margin: 20px auto;
+  padding: 15px;
+  padding-bottom: 30px;
+  width: 80%;
+  border-radius: 20px;
+  min-width: 400px;
+  position: relative;
+  height: 600px;
+  -webkit-box-shadow: #480ef1 0px 10px 13px -7px, 5px 5px 15px 5px #480ef1;
+  box-shadow: #480ef1 0px 10px 13px -7px, 5px 5px 15px 5px #480ef1;
+}
+
+#leaderboard {
+  font-family: sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  border: none;
+  margin: 0 auto;
+}
+
+#leaderboard td,
+#leaderboard th {
+  padding: 10px;
+}
+
+#leaderboard tr:nth-child(even) {
+  background-color: #eee;
+}
+
+#leaderboard tr:nth-child(odd) {
+  background-color: #2600ff2c;
+}
+
+#leaderboard tr:hover {
+  background-color: #1100ff50;
+}
+
+#leaderboard th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #100950e5;
+  color: white;
+}
+
+table tr:nth-child(2) {
+  counter-reset: rowNumber;
+}
+table tr {
+  counter-increment: rowNumber;
+}
+table tr td:first-child::before {
+  content: counter(rowNumber);
+}
+
+.button-block {
+  width: 240px;
+  top: 75px;
+  position: absolute;
+  box-shadow: 0 0 20px 9px #cc24ff1f;
+  border-radius: 30px;
+  text-align: center;
+  right: 8%;
+}
+
+.button-win {
+  width: 240px;
+  margin: 0 auto;
+  position: relative;
+  box-shadow: 0 0 20px 9px #cc24ff1f;
+  border-radius: 30px;
+  text-align: center;
+}
+
+#btn {
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 120px;
+  height: 100%;
+  background: linear-gradient(to right, #53149b, #7312e2);
+  border-radius: 30px;
+  transition: 0.4s;
+  text-align: center;
+}
+
+.btn-set {
+  padding: 12px 30px;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  outline: none;
+  position: relative;
+  font-family: sans-serif;
+  font-size: 16px;
+}
+
+.boards {
+  position: absolute;
+  margin: 0 auto;
+  width: 90%;
+}
+
+#weekly {
+  visibility: hidden;
+  left: 5%;
+}
+
+#alltime {
+  visibility: visible;
+  left: 5%;
+}

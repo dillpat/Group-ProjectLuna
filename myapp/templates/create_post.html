@@ -1,0 +1,31 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/create-post.css' %}" />
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<title>Homepage</title>
+
+<!-- The create post page provides a form for students and staff to post messages to the
+     student and academic network pages -->
+{% endblock head %}
+
+{% block page-content %}
+{% load crispy_forms_tags %}
+<div class="content-section">
+    <h2 class="border-bottom mb-4">Network Post</h2>
+    <form method="POST">
+        {% csrf_token %}
+        
+            
+            {{ form|crispy }}
+        
+        <div class="form-group">
+            <button class="btn btn-outline-info" type="submit">
+                Submit Post
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock page-content %}

@@ -1,0 +1,50 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/glider.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+{% endblock head %}
+{% block page-content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Module</title>
+    <!-- The module that the student user is part of is shown, and all posts that the user
+    has made can be edited.
+    All posts are shown on the timeline -->
+
+</head>
+<body>
+
+
+  {% with posts|first as first_object %}
+      <h1 class="network-title">{{ first_object.module}}</h1>
+    {% endwith %}
+
+
+    {% if user.is_authenticated %}
+    <div class="create-box">
+        <p>Click the button below to create a post</p>
+        <a class="btn-class-select2" href="{% url 'module_post_create' %}">Create Post</a>
+    </div>
+    {% endif %}
+        <br></br>
+
+{% for post in posts %}
+
+<div class="create-box">
+    <h class="author">{{ post.author }}</h>
+    <small class="text-muted date">{{ post.date_posted|date:"F d, Y" }}</small>
+
+<h2 class="post-title"><a class="" href="{% url 'module_post_detail' post.id %}">{{ post.title }}</a></h2>
+<p class="article-content">{{ post.content }}</p>
+<P class="text-secondary" >
+  <b>{{ post.number_of_likes }} Like{{ post.number_of_likes|pluralize }}</b>
+</P>
+</div>
+{% endfor %}
+
+
+</body>
+</html>
+{% endblock page-content %}

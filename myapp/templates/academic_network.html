@@ -1,0 +1,30 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/academic_network.css' %}" />
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+<!-- academic page shows the networks (modules) the student is part of for the university
+user can select the network to enter -->
+
+{% endblock head %}
+{% block page-content %}
+<div class="top-heading">
+    <h1>Academic Networks</h1>
+</div>
+    <div class="main">
+        <p>Select a module page you want to enter</p>
+        <form method = "POST" action="{% url 'luna_application-module_display' %}">
+            {% csrf_token %}
+            <div class="select-box">
+                <select id="module" name="module">
+                    {% for module in modules %}
+                    <option id="module-name" value="{{ module }}">{{ module }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <input class="btn-class-select2" type="submit" value="Enter" style="font-family: sans-serif;padding: 10px;">
+        </form>
+    </div>
+
+{% endblock page-content %}

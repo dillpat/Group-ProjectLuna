@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/create-network.css' %}" />
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<title>Create Network</title>
+<!-- Allows a user to create a new network for all users to see and create posts in -->
+
+{% endblock head %}
+{% block page-content %}
+{% load crispy_forms_tags %}
+<div class="content-section">
+    <h2>Create network</h2>
+    <p>Enter the name of the network you wush to create</p>
+    <form method="POST">
+        {% csrf_token %}
+
+            {{ form|crispy }}
+        <div class="form-group">
+            <button class="btn-class-select2" type="submit">Submit Post</button>
+        </div>
+    </form>
+</div>
+
+{% endblock page-content %}

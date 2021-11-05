@@ -1,0 +1,29 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="{% static 'css/assign_task.css' %}" />
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+
+<!-- The assign task page allows staff members to set goals/tasks for students part of their networks -->
+<title>Assign Tasks</title>
+{% endblock head %}
+{% block page-content %}
+
+    <h1 style="padding-left: 5%;">Assign Tasks</h1>
+
+    <div class="container">
+        <form method = "POST">
+            {% csrf_token %}
+        <label for="modules" style="font-size: 20px;">Select from one of your modules:</label>
+        <select name = "selected_module" id="modules" name="modules" style="margin-bottom: 20px;font-size: 20px;">
+            {% for each_module in taught_modules %}
+                <option name = "selected_module" value="{{each_module}}">{{each_module}}</option>
+            {% endfor %}
+        </select><br>
+            <label for="task_set" style="font-size: 20px;">Enter the task you wish to set:</label><br>
+            <input type="text" id="task_set" name="task_set" value="" style="width:250px;font-size: 20px; "><br>
+            <input type="submit" class="btn-class-select2" value="Submit" style="margin-top: 20px;">
+        </form>
+    </div>
+    {% endblock page-content %}

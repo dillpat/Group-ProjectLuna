@@ -1,0 +1,241 @@
+/* css for the planets orbiting on the homepage */
+
+.space {
+  width: 1px;
+  height: 40vh;
+  margin-top: 2vh;
+  margin: 100px auto;
+}
+
+.earth {
+  position: absolute;
+  --d: 100px;
+  width: var(--d);
+  height: var(--d);
+  display: block;
+  margin: 5px;
+  border-radius: 50%;
+  background: url("../assets/Group 11.jpg") 0 / auto 100%;
+  animation: spin 10s linear infinite;
+  animation-direction: reverse;
+}
+
+@keyframes spin {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 550px;
+  }
+}
+#system {
+  left: 50%;
+  margin-top: px;
+  margin-left: 50px;
+  border-radius: 50px;
+}
+
+#sun {
+  /* background: url("../assets/planetTemplate5.svg") 0 / auto 100%; */
+  animation: spin 10s linear infinite;
+  animation-direction: reverse;
+  border-radius: 200px;
+  box-shadow: 0 0 128px red;
+  margin-top: -100px;
+  margin-left: -50px;
+  left: 50%;
+  height: 100px;
+  width: 100px;
+  position: absolute;
+  top: 50%;
+}
+
+#earth-orbit {
+  border: 2px solid #373737;
+  border-radius: 50%;
+  left: 50%;
+  height: 300px;
+  width: 300px;
+  margin-top: -200px;
+  margin-left: -155px;
+  position: absolute;
+  top: 50%;
+
+  -webkit-animation: spin-right 6s linear infinite;
+  -moz-animation: spin-right 6s linear infinite;
+  -ms-animation: spin-right 6s linear infinite;
+  -o-animation: spin-right 6s linear infinite;
+  animation: spin-right 6s linear infinite;
+}
+
+#moon-orbit {
+  border-radius: 50%;
+  left: 50%;
+  height: 100px;
+  width: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+  position: absolute;
+  top: 50%;
+
+  -webkit-animation: spin-right 6s linear infinite;
+  -moz-animation: spin-right 6s linear infinite;
+  -ms-animation: spin-right 6s linear infinite;
+  -o-animation: spin-right 6s linear infinite;
+  animation: spin-right 6s linear infinite;
+}
+
+#p2-orbit {
+  border: 2px solid #373737;
+  border-radius: 50%;
+  left: 50%;
+  height: 550px;
+  width: 550px;
+  margin-top: -325px;
+  margin-left: -275px;
+  position: absolute;
+  top: 50%;
+
+  -webkit-animation: spin-right 15s linear infinite;
+  -moz-animation: spin-right 15s linear infinite;
+  -ms-animation: spin-right 15s linear infinite;
+  -o-animation: spin-right 15s linear infinite;
+  animation: spin-right 15s linear infinite;
+}
+
+#p3-orbit {
+  border: 2px solid #373737;
+  border-radius: 50%;
+  left: 50%;
+  height: 650px;
+  width: 650px;
+  margin-top: -375px;
+  margin-left: -325px;
+  position: absolute;
+  top: 50%;
+
+  -webkit-animation: spin-right 20s linear infinite;
+  -moz-animation: spin-right 20s linear infinite;
+  -ms-animation: spin-right 20s linear infinite;
+  -o-animation: spin-right 20s linear infinite;
+  animation: spin-right 20s linear infinite;
+}
+
+#p4-orbit {
+  border: 2px solid #373737;
+  border-radius: 50%;
+  left: 50%;
+  height: 400px;
+  width: 400px;
+  margin-top: -250px;
+  margin-left: -205px;
+  position: absolute;
+  top: 50%;
+
+  -webkit-animation: spin-right 10s linear infinite;
+  -moz-animation: spin-right 10s linear infinite;
+  -ms-animation: spin-right 10s linear infinite;
+  -o-animation: spin-right 10s linear infinite;
+  animation: spin-right 10s linear infinite;
+}
+
+#earth {
+  margin-left: -25px;
+  margin-top: -25px;
+  height: 50px;
+  left: 50%;
+  position: absolute;
+  top: 0%;
+  width: 50px;
+  --d: 50px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 50px;
+  background: url("../assets/Group 11.jpg") 0 / auto 100%;
+  animation: spin 10s linear infinite;
+  animation-direction: reverse;
+  box-shadow: 0 0 200px blue;
+}
+#p2 {
+  margin-left: -25px;
+  margin-top: -25px;
+  height: 50px;
+  left: 50%;
+  position: absolute;
+  top: 0%;
+  width: 50px;
+  --d: 50px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 50px;
+  background: url("../assets/planetTemplate1.svg") 0 / auto 100%;
+  animation: spin 10s linear infinite;
+  animation-direction: reverse;
+}
+
+#p3 {
+  margin-left: -25px;
+  margin-top: -15px;
+  height: 25px;
+  left: 50%;
+  position: absolute;
+  top: 0%;
+  width: 25px;
+  --d: 25px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 25px;
+  background: url("../assets/planetTemplate2.svg") 0 / auto 100%;
+  animation: spin 10s linear infinite;
+  animation-direction: reverse;
+}
+
+#p4 {
+  margin-left: -25px;
+  margin-top: -15px;
+  height: 25px;
+  left: 50%;
+  position: absolute;
+  top: 0%;
+  width: 25px;
+  --d: 25px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 25px;
+  background: url("../assets/planetTemplate3.svg") 0 / auto 100%;
+  animation: spin 10s linear infinite;
+  animation-direction: reverse;
+}
+
+#moon {
+  margin-left: -25px;
+  margin-top: -15px;
+  height: 20px;
+  left: 50%;
+  position: absolute;
+  top: 0%;
+  width: 20px;
+  --d: 20px;
+  width: var(--d);
+  height: var(--d);
+  border-radius: 25px;
+  background: url("../assets/planetTemplate5.svg") 0 / auto 100%;
+  animation: spin 10s linear infinite;
+  animation-direction: reverse;
+}
+
+@-webkit-keyframes spin-right {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spin-right {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+@-keyframes spin-right {
+  100% {
+    transform: rotate(360deg);
+  }
+}

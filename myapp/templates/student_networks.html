@@ -1,0 +1,36 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/glider.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+<title>Luna Networks</title>
+<!-- first student network page, shows all available networks and option
+to create a new network -->
+
+{% endblock head %}
+{% block page-content %}
+    <div class="top-heading">
+      <h1 class="title">Planet Navigation</h1>
+    </div>
+
+        <div class="create-box">
+          <h2>Create network</h2>
+          <h4>Click the button below to create a network</h4>
+          {% if user.is_authenticated %}
+          <div>
+              <a class="btn-class-select2" href="{% url 'network_create' %}">Create Network</a>
+          </div>
+          {% endif %}
+        </div>
+
+        <div class="current-networks-box">
+        <form method = "POST" action="{% url 'luna_application-network_display' %}">
+          {% csrf_token %}
+          <div class="btn-group">
+          {% for network in networks %}
+                    <button class="btn-class-select" id="network" name="network" value="{{ network }}">{{ network}}</button>
+          {% endfor %}
+        </div>
+        </form>
+      </div>
+{% endblock page-content %}

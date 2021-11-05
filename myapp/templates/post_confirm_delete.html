@@ -1,0 +1,25 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/glider.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+<title>Delete post</title>
+
+<!-- Page to ask creatoe of page for confirmation before deleting it -->
+{% endblock head %}
+{% block page-content %}
+<div class="create-box">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Delete Post</legend>
+            <h2>Are you sure you want to delete the post "{{ object.title }}"</h2>
+        </fieldset>
+        <div class="form-group">
+            <button class="btn-class-select3" type="submit">Yes, Delete</button>
+            <a class="btn-class-select2" href="{% url 'post_detail' object.id %}">Cancel</a>
+        </div>
+    </form>
+    
+</div>
+{% endblock page-content %}

@@ -1,0 +1,131 @@
+{% extends './base.html' %}
+{% load static %}
+{% load static %} {% block head %}
+<html>
+<link rel="stylesheet" href="{% static 'css/glider.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+<link rel="stylesheet" href="{% static 'css/network_single_post.css' %}" />
+<title>Student post</title>
+
+<!-- This page shows a post when it has been clicked, shows the author, number of likes
+gives options to like and report, and gives the author option to update or delete -->
+{% endblock head %}
+{% block page-content %}
+<body>
+<article class="media content-section">
+<div class="create-box">
+
+
+
+    <div class="article-metadata">
+    <a class="mr-2" href="#">{{ object.author }}</a>
+    <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+    <h2 class="article-title" href = "#">{{ object.title }}</h2>
+    <p class="article-content">{{ object.content }}</p>
+    <p class="text-secondary" ><b>{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</b></p>
+    <div class="like-button">
+      {% if user.is_authenticated %}
+
+      <form action="{% url 'networkpost_like' object.id %}" method="POST">
+        {% csrf_token %}
+
+        {% if post_is_liked %}
+        <button type="submit" name="network_post_id" value="{{object.id}}" class="like-btn" style="font-size: 15px;">
+          <i class="fa fa-thumbs-up" style="font-size:36px;color:green;padding-right: 10px;"></i>You have liked this post</button>
+        {% else %}
+        <button type="submit" name="network_post_id" value="{{object.id}}" class="like-btn"><i class="far fa-thumbs-up" style="font-size:36px;color:green"></i></button>
+        {% endif %}
+      </form>
+      {% endif %}
+      </div>
+      <form method = "POST" action="{% url 'luna_application-network_display' %}">
+        {% csrf_token %}
+
+
+        {% if post_is_reported %}
+
+        <div class="btn-group">
+          <a href="/network_display/" class="btn-class-select3" id="network" name="network" value="{{object.network}}">Back</a>
+        </div>
+
+        {% else %}
+        <div class="btn-group">
+          <button class="btn-class-select3" id="network" name="network" value="{{object.network}}">Back</button>
+        </div>
+        {% endif %}
+
+    </form>
+    <div>
+
+    <div class="report-btn">
+     <form action="{% url 'networkpost_report' object.id %}" method="POST">
+        {% csrf_token %}
+        {% if post_is_reported %}
+          <button onclick="alert('Report has been revoked')" type="submit" name="network_report_id" value="{{object.id}}"><i style="color: red;" class="fas fa-flag"></i></button>
+        {% else %}
+          <button onclick="alert('Post has been reported')" type="submit" name="network_report_id" value="{{object.id}}"><i style="color: lime;" class="fas fa-flag"></i></button>
+      </form>
+    </div>
+
+        {% endif %}
+    </div>
+    {% if object.author == user %}
+            <a class="btn-class-select2" href="{% url 'post_update' object.id %}">Update</a>
+            <a class="btn-class-select3" href="{% url 'post_delete' object.id %}">Delete</a>
+    {% endif %}
+      </div>
+      <form action="{% url 'networkpost_report' object.id %}" method="POST">
+        {% csrf_token %}
+
+      </form>
+
+    </div>
+
+
+</article>
+
+<div class="create-box textbox">
+  <form action="{% url 'networkpost_comment' object.id %}" method="POST">
+    {% csrf_token %}
+    <div class="comment-area">
+      <textarea name="comment_posted"  onfocus="setbg('#e5fff3');" onblur="setbg('white')" id="" rows="4"></textarea>
+      <button type="submit" class="comment-btn">Post comment</button>
+    </div>
+  </form>
+</div>
+
+<div class="comment">
+
+  {% for comment in comments %}
+
+  <div class="create-box">
+
+
+
+    <div class="article-metadata">
+    <a class="mr-2" href="#">{{ comment.author }}</a>
+    <small class="text-muted">{{ comment.date_posted|date:"F d, Y" }}</small>
+    <p class="article-content">{{ comment.content }}</p>
+      </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+<script>
+  $(".options").click(function(e){
+      e.stopPropagation();
+      console.log(e)
+      $(this).find(".fa-cog").toggleClass("inactive");
+      $(this).find(".fa-close").toggleClass("active");
+      $(this).find(".option-container").toggleClass("active");
+    })
+</script>
+
+
+</body>
+</html>
+{% endblock page-content %}

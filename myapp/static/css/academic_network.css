@@ -1,0 +1,42 @@
+/* css for the academic network page */
+p {
+  font-family: sans-serif;
+}
+
+h1 {
+  font-family: sans-serif;
+  font-size: 8vw;
+}
+
+.top-heading {
+  text-align: center;
+}
+
+.main {
+  background: white;
+  color: black;
+  margin: 100px auto;
+  width: 80%;
+  padding: 20px;
+  padding-bottom: 30px;
+  border-radius: 30px;
+  -webkit-box-shadow: #480ef1 0px 5px 5px -7px, 5px 5px 5px 5px #480ef1;
+  box-shadow: #480ef1 0px 5px 5px -7px, 5px 5px 5px 5px #480ef1;
+}
+
+.select-box {
+  font-size: 20px;
+  padding-bottom: 30px;
+}
+
+#module,
+#module-name {
+  font-size: 20px;
+  padding: 5px;
+  font-family: sans-serif;
+}
+
+#module {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

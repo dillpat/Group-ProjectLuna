@@ -1,0 +1,65 @@
+{% extends './base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/glider.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/student_network.css' %}" />
+<title>Student networks</title>
+
+<!-- Page shows all the posts for a chosen network, gives option to click on posts for more detail -->
+{% endblock head %}
+{% block page-content %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Network Display</title>
+    </head>
+    <body>
+      {% with posts|first as first_object %}
+          <h1 class="network-title">{{ first_object.network}}</h1>
+        {% endwith %}
+
+        <div class="create-box">
+        <p>Click the button below to create a post</p>
+        {% if user.is_authenticated %}
+        <div>
+            <a class="btn-class-select2" href="{% url 'post_create' %}">Create Post</a>
+        </div>
+        {% endif %}
+      </div>
+        {% for post in posts %}
+            <div class="create-box">
+              <div class="topper">
+              <p class="author" ><em>{{ post.author }} -</em>
+              {% for user_p in users %}
+              {% if user_p.user == post.author %}
+                {% if user_p.user_rank == "Rookie" %}
+                  <div class="rank rank1"> {{user_p.user_rank}}</div>
+                  {% elif user_p.user_rank == "Lieutenant" %}
+                  <div class="rank rank2"> {{user_p.user_rank}}</div>
+                  {% elif user_p.user_rank == "Captain" %}
+                  <div class="rank rank3"> {{user_p.user_rank}}</div>
+                  {% elif user_p.user_rank == "Colonel" %}
+                  <div class="rank rank4">{{user_p.user_rank}}</div>
+                  {% elif user_p.user_rank == "General" %}
+                  <div class="rank rank5"> {{user_p.user_rank}}</div>
+                {% endif %}
+              {% endif %}
+              
+            {% endfor %}
+            
+              
+            <small class="text-muted date">{{ post.date_posted|date:"F d, Y" }}</small>
+              </p></div>
+            <div class="post">           
+            <h2 class="post-title"><a class="article-title" href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.content }}</p>
+            </div>  
+            <P class="text-secondary" >
+              <b>{{ post.number_of_likes }} Like{{ post.number_of_likes|pluralize }}</b>
+            </P>
+            </div>
+        {% endfor %}
+    </body>
+
+</html>
+{% endblock page-content %}

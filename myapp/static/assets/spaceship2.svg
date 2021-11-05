@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="464.996" height="537.461" viewBox="0 0 464.996 537.461">
+  <g id="Group_139" data-name="Group 139" transform="matrix(-0.391, -0.921, 0.921, -0.391, 3604.497, -17061.669)">
+    <g id="Group_138" data-name="Group 138">
+      <g id="Group_137" data-name="Group 137" transform="translate(-24513.824 4751.824) rotate(90)">
+        <g id="spacecraft-svgrepo-com" transform="translate(-14888.824 -10137)">
+          <path id="Path_420" data-name="Path 420" d="M225.938,85.826l70.5,282.007,132.736,88.49V322.938Z" fill="#a934ec" stroke="#a934ec" stroke-width="1"/>
+          <path id="Path_421" data-name="Path 421" d="M82.824,322.938V456.323l132.736-88.49,70.5-282.007Z" fill="#a934ec" stroke="#a934ec" stroke-width="1"/>
+          <path id="Path_427" data-name="Path 427" d="M60.235,0A60.235,60.235,0,1,1,0,60.235,60.235,60.235,0,0,1,60.235,0Z" transform="translate(195.765 361.412)" fill="#ffa060" stroke="#ffa060" stroke-width="1"/>
+          <path id="Path_422" data-name="Path 422" d="M293.647,391.529c0,18.3-9,36.826-26.752,55.078-3.659,3.763-7.362,7.16-10.9,10.159-3.533-3-7.236-6.4-10.9-10.159-17.751-18.251-26.752-36.783-26.752-55.078h75.294M256,346.353l-82.824,45.176c0,.075,0,.151,0,.247C173.342,466.914,256,512,256,512s82.824-45.176,82.824-120.471Z" fill="#ff3737" stroke="#ff3737" stroke-width="1"/>
+          <path id="Path_423" data-name="Path 423" d="M256,346.353v45.176h37.647c0,18.3-9,36.826-26.752,55.078-3.659,3.763-7.362,7.16-10.9,10.159V512s82.824-45.176,82.824-120.471Z" fill="#ff3737"/>
+          <path id="Path_424" data-name="Path 424" d="M338.824,391.529V120.471C338.824,45.176,256,0,256,0s-82.824,45.176-82.824,120.471V391.53H338.824Z" fill="#fff" stroke="#fff" stroke-width="1"/>
+          <rect id="Rectangle_153" data-name="Rectangle 153" width="165.647" height="45.176" transform="translate(173.176 346.353)" fill="#9b32d7" stroke="#9b32d7" stroke-width="1"/>
+        </g>
+        <g id="layer1" transform="translate(-14956.601 -10287.131)">
+          <text id="text3065" transform="translate(280.601 286.131)" fill="#a934ec" stroke="#a934ec" stroke-width="1" font-size="121" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">G</tspan></text>
+        </g>
+        <g id="Group_136" data-name="Group 136" transform="translate(-1231.879 294.496)">
+          <circle id="Ellipse_216" data-name="Ellipse 216" cx="39.994" cy="39.994" r="39.994" transform="translate(-13440.938 -10223.496)" fill="#a934ec" stroke="#a934ec" stroke-width="1"/>
+          <g id="Group_135" data-name="Group 135" transform="translate(-13440.939 -10223.491)">
+            <path id="Path_419" data-name="Path 419" d="M245.361,275.99a39.847,39.847,0,0,1,28.66-38.238,39.837,39.837,0,1,0,0,76.474A39.844,39.844,0,0,1,245.361,275.99Z" transform="translate(-223.011 -236.152)" fill="#231f20" stroke="#9b32d7" stroke-width="1" opacity="0.1"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

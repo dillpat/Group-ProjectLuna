@@ -1,0 +1,199 @@
+.nav-open {
+  display: none;
+}
+#dib-posts {
+  margin-top: 20vh;
+}
+.dib-post a {
+  color: #800080;
+}
+
+.glider-container {
+  width: 80%;
+  margin: 10%;
+}
+
+.return {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 1rem;
+  font-size: 3.5vw;
+  cursor: pointer;
+  color: #fff;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 8vw;
+}
+
+.pop-up-wrapper {
+  position: fixed;
+  top: 0;
+  z-index: 5000;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.pop-up-wrapper:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.pop-up {
+  margin: 70px auto;
+  padding: 20px;
+  height: fit-content;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  z-index: 3000;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.pop-up h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.pop-up .close {
+  position: absolute;
+  top: 0;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.pop-up .close:hover {
+  color: #06d85f;
+}
+.pop-up-content {
+  max-height: 30%;
+  overflow: auto;
+  text-align: center;
+  background-color: #fff;
+}
+
+.quiz-wrapper {
+  width: 100vw;
+  height: 300px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.quiz-card {
+  width: 20vw;
+  height: 20vh;
+  background: #fff;
+  display: block;
+}
+
+.quiz-card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.5 ease-out;
+}
+
+.quiz-card {
+  text-align: center;
+  position: relative;
+  top: 60%;
+  font-weight: 600;
+  color: #fff;
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 2rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.quiz-card > h2 {
+  color: black;
+  top: 50%;
+}
+
+.shader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: black;
+  z-index: 1;
+  overflow: hidden;
+  opacity: 0.6;
+}
+
+.quiz-card:nth-child(1) {
+  background: url("../assets/quiz/undraw_mindfulness_scgo.svg");
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.quiz-card:nth-child(2) {
+  background: url("../assets/quiz/undraw_science_fqhl.svg");
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.quiz-card:nth-child(3) {
+  background: url("../assets/quiz/undraw_true_love_cy8x.svg");
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.quiz-card:nth-child(4) {
+  background: url("../assets/quiz/undraw_yoga_248n.svg");
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 700px) {
+  .box {
+    width: 70%;
+  }
+  .popup {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .quiz-wrapper {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .quiz-card {
+    flex-basis: calc(50% - 40px);
+    height: 10vh;
+    width: 8vw;
+  }
+  #dib-posts {
+    margin-top: 30vh;
+  }
+}

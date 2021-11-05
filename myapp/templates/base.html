@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNA</title>
+    <!-- The base html page, the navigation bar allows the user to change page
+    This page is linked on all pages for easy navigation
+         -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,700;1,500&display=swap" rel="stylesheet">
+    {% block head %} {% endblock head %}
+</head>
+<body>
+
+  <div class="nav-open" onclick="openNav()"></div>
+
+  <div class="side-nav">
+      <div class="option-wrapper">
+          <a  onclick="location.href='{% url 'luna_application-home_page' %}'"><i class="fas fa-rocket"></i>Dashboard</a>
+          {% if user != user.staffprofile.user %}
+          <a  onclick="location.href='{% url 'luna_application-student_networks' %}'"><i class="fas fa-book"></i>Student Networks</a>
+          <a  onclick="location.href='{% url 'luna_application-wellbeing_tasks' %}'"><i class="fas fa-tasks"></i>Wellbeing</a>
+          {% else %}
+          <a  onclick="location.href='{% url 'luna_application-assign_tasks' %}'"><i class="fas fa-tasks"></i>Assign Tasks</a>
+          {% endif %}
+          <a  onclick="location.href='{% url 'luna_application-academic_network' %}'"><i class="fas fa-graduation-cap"></i>Academic</a>
+          <a  onclick="location.href='{% url 'luna_application-leaderboards' %}'"><i class="fas fa-medal"></i>Leaderboards</a>
+          <a  onclick="location.href='{% url 'luna_application-my_profile' %}'"><i class="fas fa-user" ></i>Profile</a>
+          <a  href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i>Logout</a>
+      </div>
+  </div>
+
+    <!-- Header content -->
+    <div class="friends-header">
+        <div class="friend-box-wrapper">
+        </div>
+      </div>
+
+      <!-- Page content -->
+
+      <div class="page-content">
+          {% block page-content %}
+          {% endblock page-content %}
+      </div>
+
+
+      <!-- Page footer -->
+      <div class="stars"></div>
+      <div class="twinkling"></div>
+      <div class="side-nav-shader" onclick="closeNav()"></div>
+    {% block extrascripts %}
+    {% endblock extrascripts %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://kit.fontawesome.com/e862d661c1.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/base.js' %}"></script>
+</body>
+</html>

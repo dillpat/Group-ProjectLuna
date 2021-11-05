@@ -1,0 +1,104 @@
+<html>
+{% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static 'css/start.css' %}" />
+    </head>
+    <title>Start Page</title>
+    <!-- The startpage for the luna application, with animations for the start to the
+    login page -->
+    <body>
+      <div id="float1">
+      <div class="planet1"></div>
+    </div>
+    <div id="float2">
+      <div class="planet2"></div>
+    </div>
+      <div id="float3">
+      <div class="planet3"></div>
+    </div>
+
+    <div id="float4">
+    <div class="planet4"></div>
+  </div>
+
+        <div class="explore-container">]
+            <img id="luna-logo" src="{% static 'assets/logo.svg' %}" alt="">
+            <button id="explore-btn">EXPLORE</button>
+        </div>
+
+
+        <div class="moon-wrapper">
+            <img class="moon" src="{% static 'assets/moon.svg' %}" alt="">
+        </div>
+        <svg id="spaceship" xmlns="http://www.w3.org/2000/svg" width="464.996" height="521.85" viewBox="0 0 464.996 521.85">
+            <path id="path" d="M96.254 162.298c-86.182-130.155-.61-117.852-.61-117.852l191.924 137.278" fill="none" stroke="#000" stroke-width=".311"/>
+            <g id="Group_139" data-name="Group 139" transform="matrix(-0.391, -0.921, 0.921, -0.391, 3604.497, -17061.669)">
+              <g id="Group_138" data-name="Group 138">
+                <g id="Group_137" data-name="Group 137" transform="translate(-24513.824 4751.824) rotate(90)">
+                  <g id="spacecraft-svgrepo-com" transform="translate(-14888.824 -10137)">
+                    <path id="Path_420" data-name="Path 420" d="M225.938,85.826l70.5,282.007,132.736,88.49V322.938Z" fill="#a934ec" stroke="#a934ec" stroke-width="1"/>
+                    <path id="Path_421" data-name="Path 421" d="M82.824,322.938V456.323l132.736-88.49,70.5-282.007Z" fill="#a934ec" stroke="#a934ec" stroke-width="1"/>
+                    <path id="Path_424" data-name="Path 424" d="M338.824,391.529V120.471C338.824,45.176,256,0,256,0s-82.824,45.176-82.824,120.471V391.53H338.824Z" fill="#fff" stroke="#fff" stroke-width="1"/>
+                    <rect id="Rectangle_153" data-name="Rectangle 153" width="165.647" height="45.176" transform="translate(173.176 346.353)" fill="#9b32d7" stroke="#9b32d7" stroke-width="1"/>
+                  </g>
+                  <g id="layer1" transform="translate(-14956.601 -10287.131)">
+                    <text id="text3065" transform="translate(280.601 286.131)" fill="#a934ec" stroke="#a934ec" stroke-width="1" font-size="121" font-family="SegoeUI-Bold, Segoe UI" font-weight="700"><tspan x="0" y="0">G</tspan></text>
+                  </g>
+                  <g id="Group_136" data-name="Group 136" transform="translate(-1231.879 294.496)">
+                    <circle id="Ellipse_216" data-name="Ellipse 216" cx="39.994" cy="39.994" r="39.994" transform="translate(-13440.938 -10223.496)" fill="#a934ec" stroke="#a934ec" stroke-width="1"/>
+                    <g id="Group_135" data-name="Group 135" transform="translate(-13440.939 -10223.491)">
+                      <path id="Path_419" data-name="Path 419" d="M245.361,275.99a39.847,39.847,0,0,1,28.66-38.238,39.837,39.837,0,1,0,0,76.474A39.844,39.844,0,0,1,245.361,275.99Z" transform="translate(-223.011 -236.152)" fill="#231f20" stroke="#9b32d7" stroke-width="1" opacity="0.1"/>
+                    </g>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </svg>
+          
+        
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+        <div class="comet" id="comet1"></div>
+        <div class="comet" id="comet2"></div>
+        <div class="comet" id="comet3"></div>
+        <div class="comet" id="comet4"></div>
+        <div class="comet" id="comet5"></div>
+        <div class="comet" id="comet6"></div>
+
+       
+          
+    </body>
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.5.1.min.js"
+  integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+  crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="{% static 'js/start.js' %}"></script>
+    <script>
+       // console.clear();
+        var tl = gsap.timeline()
+        
+      //  tl.to("#luna-logo",{repeat:-1, rotation:360, duration:100, yoyo:true})
+        var cometTimeline = gsap.timeline({repeat: -1, repeatDelay:5 ,defaults: {ease: Power4.easeIn}})
+
+        cometTimeline.fromTo('#comet1', 4, {rotation: 30, scaleY: 0, opacity:0}, {rotation: 30, scaleY: 1, x: -1300, y: 3000, opacity:1})
+        cometTimeline.fromTo('#comet2', 2.5, { rotation: 30, scaleY: 0, opacity:0}, {rotation: 30, scaleY: 1, x: -500, y: 3000, opacity:1})
+        cometTimeline.fromTo('#comet3', 3, {rotation: 30, scaleY: 0, opacity:0}, {rotation: 30, scaleY: 1, x: -500, y: 3000, opacity:1})
+        cometTimeline.fromTo('#comet4', 3, { rotation: 30, scaleY: 0, opacity:0}, {rotation: 30, scaleY: 1, x: -500, y: 3000, opacity:1})
+        cometTimeline.fromTo('#comet5', 4, { rotation: 30, scaleY: 0, opacity:0}, {rotation: 30, scaleY: 1, x: -500, y: 3000, opacity:1})
+        cometTimeline.fromTo('#comet6', 3, { rotation: 30, scaleY: 0, opacity:0}, {rotation: 30, scaleY: 1, x: -500, y: 3000, opacity:1})
+
+        $("#explore-btn").click(clicked)
+
+        function clicked(){
+            let tl = gsap.timeline({onComplete:function(){
+                window.location = window.location.href + "login"
+            }});
+            tl.to("#spaceship",{x:4,repeat:30,yoyo:true,duration:0.05})
+            tl.to("#spaceship",{top:"30%", left:"10%", scale:0,duration:3})
+        }
+    </script>
+
+</html>

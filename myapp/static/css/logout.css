@@ -1,0 +1,61 @@
+/* css for the logout page */
+.main {
+  position: absolute;
+  color: #fff;
+  font-size: 2vw;
+  left: 30vw;
+  top: 20%;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn > input {
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  margin-top: 100px;
+  color: black;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  border: 0;
+  border-radius: 30px;
+}
+
+.stars,
+.twinkling {
+  position: absolute;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.stars {
+  z-index: -100;
+  background: #000 url("../assets/backgroundStars.png") repeat top center;
+  position: fixed;
+}
+
+.twinkling {
+  z-index: -100;
+  background: transparent url("../assets/twinkling.png") repeat top center;
+  animation: move-twink-back 200s linear infinite;
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -10000px 5000px;
+  }
+}

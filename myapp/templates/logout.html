@@ -1,0 +1,22 @@
+<html>
+    <!-- Logout page is where staff and students are redirected to after logging out -->
+{% load static %}
+    <head>
+        <link rel="stylesheet" type="text/css"  href="{% static 'css/logout.css' %}" />
+    </head>    
+    <body>
+        <div class= "main">
+            <div class="name">
+                <h1>You have been logged out</h1>
+            </div>
+ 
+            <form action="{% url 'login' %}">
+                <div class="btn">
+                    <input class="logout-button" type = "submit" value = "Log Back In">
+                </div>
+            </form>
+        </div>
+        <div class="stars"></div>
+        <div class="twinkling"></div>
+    </body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!-- profile page which shows the persons account and info including
+name, rank, num of credits, modules. User can select a favourite planet and reset password -->
+
+<html>
+    {% extends './base.html' %}
+    {% load crispy_forms_tags%}
+
+    {% load static %}
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+    <title>My Profile</title>
+    {% endblock head %}
+
+    {% block page-content %}
+    <body>
+
+        <div class="heading">
+            <h1>My Profile</h1>
+        </div>
+
+
+<div class="profile-wrapper">
+
+    <div class="overall-profile">
+        <div class="top-block">
+            <div class="content-user">
+                <h2 class="profile-username">{{ user.username }}</h2>
+            </div>
+
+
+        {% if user == user.staffprofile.user %}
+            <div class="content-rank">
+                <i class="fas fa-user-astronaut"></i>
+                <h2 class="profile-rank">Staff Member</h2>
+            </div>
+        </div>
+
+        <div class="planets-block">
+            <div class="left-section">
+            <h2>List of planets for staff member:<h2>
+                <ul>
+                    {%for module in modules%}
+                        <li>{{module}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+                <div class="password_reset">
+                    <button onclick="location.href='{% url 'password_reset' %}'">
+                        Password Reset 
+                    </button>
+                </div>
+        </div>
+
+
+        {% else %}
+        <div class="content-rank">
+            <img src="{% static user.studentprofile.rank_badge %}">
+            <h2 class="profile-rank">{{ user.studentprofile.user_rank }}</h2>
+        </div>
+        <div class="content-credits">
+
+            <h2 class="profile-credits">Astro Credits: {{ user.studentprofile.astro_credits }}</h2>
+        </div>
+        <div class="content-studentnumber">
+
+            <h2 class="profile-studentnumber">Student number: {{ user.studentprofile.student_number }}</h2>
+        </div>
+    </div>
+
+
+
+    <div class="planets-block">
+        <div class="left-section">
+            <h2>List of modules:<h2>
+                <ul>
+                    {% for module in modules %}
+                        <li>{{module}}</li>
+                    {% endfor %}
+                </ul>
+        </div>
+
+        
+        <div>
+            <form method = "POST">
+                {% csrf_token %}
+            <label for="modules">Select from one of your modules:</label>
+            <select name = "selected_favourite" id="modules" name="modules">
+                {% for each_module in modules %}
+                    <option name = "selected_favourite" value="{{each_module}}">{{each_module}}</option>
+                {% endfor %}
+            </select>
+                <input type="submit" value="Change Favourite">
+            </form>
+            <div class="displayed-mod">
+                <h3>Current Favourite: {{displayed_module}}</h3>
+            </div>
+            <div class="password_reset">
+                <button onclick="location.href='{% url 'password_reset' %}'">
+                    Password Reset 
+                </button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+</div>
+
+    </body>
+</html>
+{% endblock page-content %}

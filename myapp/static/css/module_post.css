@@ -1,0 +1,32 @@
+.create-box {
+  color: black;
+  background: white;
+  position: relative;
+  margin: 20px auto;
+  padding: 20px;
+  padding-left: 25px;
+  -webkit-box-shadow: #480ef1 0px 10px 13px -7px, 5px 5px 15px 5px #480ef1;
+  box-shadow: #480ef1 0px 10px 13px -7px, 5px 5px 15px 5px #480ef1;
+  padding-top: 10px;
+  width: 85%;
+  border-radius: 20px;
+}
+
+.create-box.textbox {
+  width: 60%;
+}
+
+.comment {
+  width: 60%;
+  margin: auto;
+}
+
+.comment .article-content {
+  width: 80%;
+}
+
+@media only screen and (max-width: 500px) {
+  .article-metadata {
+    width: 100%;
+  }
+}

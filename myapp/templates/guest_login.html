@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/guest_login.css' %}" />
+<title>HUB Page</title>
+
+{% endblock head %}
+
+
+{% block page-content %}
+<div class="page-title">
+    The Hub
+</div>
+<a class="return" href="/login/">
+    <i class="fas fa-arrow-circle-left"></i>
+</a>
+
+<div class="quiz-wrapper">
+    <a class="quiz-card" value="https://quiz.tryinteract.com/#/604391e863fd8c00174e79a3?method=iframe">
+        <h2>How healthy are you really?</h2> 
+    </a>
+    <a class="quiz-card" value="https://quiz.tryinteract.com/#/604391dd63fd8c00174e799e?method=iframe">
+        <h2>What STEM career is right for you?</h2> 
+    </a>
+    <a class="quiz-card" value="https://quiz.tryinteract.com/#/6043915e1e7de10017cf3936?method=iframe">
+        <h2>What is your emotional intelligence ?</h2> 
+    </a>
+
+    <a class="quiz-card" value="https://quiz.tryinteract.com/#/6044c9e7ef9dca0017817565?method=iframe">
+        <h2>What type of yoga is right for you?</h2>
+    </a>
+
+</div>
+
+<div class="pop-up-wrapper" id="popup1">
+    <div class="pop-up" >
+        <a href="#" class="close">&times;</a>
+        <div class="pop-up-content">
+            <iframe id="interactApp604391e863fd8c00174e79a3" width="800" height="800"
+style="border:none;max-width:100%;margin:0;" allowTransparency="true" src=""
+frameborder="0"></iframe>
+        </div>
+    </div>
+</div>
+
+<div id="dib-posts"></div>
+
+{% if user == user.staffprofile.user or user == user.studentprofile.user %}
+
+<style>
+    .nav-open{
+        display: unset;
+    }
+    .return{
+        display: none;
+    }
+</style>
+
+{% endif %}
+
+
+{% endblock %}
+
+{% block extrascripts %}
+<script src="{% static 'js/guest.js' %}"></script>
+<script src="https://io.dropinblog.com/js/embed.js"></script>
+{% endblock extrascripts %}
